@@ -21,7 +21,7 @@ strategist win!
 Available positions are:
 """)
     for i in range(len(board)):
-        if board[i] == " ":
+        if board[i] == EMPTY_SLOT:
             board[i] = str(i+1)
 
     display_board(board)

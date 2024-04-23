@@ -1,3 +1,7 @@
+EMPTY_SPOT = " "
+X_PLAYER = "X"
+O_PLAYER = "O"
+
 def check_draw(board):
     return " " not in board
 

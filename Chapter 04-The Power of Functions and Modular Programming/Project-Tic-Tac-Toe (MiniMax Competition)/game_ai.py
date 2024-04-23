@@ -1,6 +1,6 @@
 import random
 
-from game_mechanics import get_available_spots, check_winner
+from game_mechanics import get_available_spots, check_winner, EMPTY_SPOT, X_PLAYER, O_PLAYER
 
 
 def get_ai_move(ai_type, current_player, board):
@@ -31,26 +31,23 @@ def rules_based_ai_move(current_player, board):
     """
     Determines the AI's move based on predefined rules.
     """
-    opponent = "O" if current_player == "X" else "X"
+    opponent = O_PLAYER if current_player == X_PLAYER else X_PLAYER
 
     # Try for a Win
     for i in range(9):
-        if board[i] == " " and test_move(board, current_player, i):
+        if board[i] == EMPTY_SPOT and test_move(board, current_player, i):
             return i
 
     # Block Opponent
     for i in range(9):
-        if board[i] == " " and test_move(board, opponent, i):
+        if board[i] == EMPTY_SPOT and test_move(board, opponent, i):
             return i
 
     # Try Center or Corners
-    if board[4] == " ":
-        return 4  # Prefer the center
-
-    corners = [0, 2, 6, 8]
+    corners = [0, 2, 6, 8, 4]
     random.shuffle(corners)
     for i in corners:
-        if board[i] == " ":
+        if board[i] == EMPTY_SPOT:
             return i
 
     # Pick Randomly
@@ -58,7 +55,7 @@ def rules_based_ai_move(current_player, board):
 
 
 def minimax_V1(board, is_maximizing, current_player, depth=0):
-    opponent = "O" if current_player == "X" else "X"
+    opponent = O_PLAYER if current_player == X_PLAYER else X_PLAYER
     if check_winner(board) == current_player:
         return 10 - depth, None
     elif check_winner(board) == opponent:
@@ -72,7 +69,7 @@ def minimax_V1(board, is_maximizing, current_player, depth=0):
         for spot in get_available_spots(board):
             board[spot] = current_player
             score, _ = minimax_V1(board, False, current_player, depth + 1)
-            board[spot] = " "
+            board[spot] = EMPTY_SPOT
             if score > best_score:
                 best_score = score
                 best_move = spot
@@ -83,7 +80,7 @@ def minimax_V1(board, is_maximizing, current_player, depth=0):
         for spot in get_available_spots(board):
             board[spot] = opponent
             score, _ = minimax_V1(board, True, current_player, depth + 1)
-            board[spot] = " "
+            board[spot] = EMPTY_SPOT
             if score < best_score:
                 best_score = score
                 best_move = spot
@@ -95,7 +92,7 @@ def minimax_ai_move_V1(current_player, board):
 
 
 def minimax_V2(player, board, depth, is_maximizing):
-    opponent = "O" if player == "X" else "X"
+    opponent = O_PLAYER if player == X_PLAYER else X_PLAYER
     if check_winner(board) == player:
         return 10 - depth, None  # Prioritize quicker wins
     elif check_winner(board) == opponent:
@@ -108,7 +105,7 @@ def minimax_V2(player, board, depth, is_maximizing):
     for move in get_available_spots(board):
         board[move] = player if is_maximizing else opponent
         score, _ = minimax_V2(player, board, depth + 1, not is_maximizing)
-        board[move] = " "
+        board[move] = EMPTY_SPOT
 
         if is_maximizing and score > best_score or not is_maximizing and score < best_score:
             best_score = score

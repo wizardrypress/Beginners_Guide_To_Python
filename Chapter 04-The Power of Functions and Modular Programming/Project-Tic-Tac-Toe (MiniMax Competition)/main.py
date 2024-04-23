@@ -1,12 +1,8 @@
 import random
-
 from game_ai import get_ai_move
-from game_mechanics import check_winner, check_draw
-from game_ui import display_board, get_human_player_move, select_player_types, select_rounds
-
-
-def initialize_board():
-    return [" "]*9
+from game_mechanics import check_winner, check_draw, initialize_board, X_PLAYER, O_PLAYER
+from game_ui import display_board, get_human_player_move, select_player_types, select_rounds, select_first_player, \
+    types_of_players
 
 
 def play_game():
@@ -18,15 +14,16 @@ def play_game():
     if rounds is None:
         return
 
-    first_player = 0 #random.choice([0, 1])
+    first_player = select_first_player(player_types)
+
     players = {
-        "X": player_types[first_player],
-        "O": player_types[(first_player + 1) % 2]
+        X_PLAYER: player_types[first_player],
+        O_PLAYER: player_types[(first_player + 1) % 2]
     }
 
-    wins = {"X": 0, "O": 0}
+    wins = {X_PLAYER: 0, O_PLAYER: 0}
     draws = 0
-    current_player = "X"
+    current_player = X_PLAYER
 
     for i in range(rounds):
         board = initialize_board()
@@ -56,13 +53,13 @@ def play_game():
                 draws += 1
                 game_is_playing = False
             else:
-                current_player = "O" if current_player == "X" else "X"  # Step 6: Switch turns
+                current_player = O_PLAYER if current_player == X_PLAYER else X_PLAYER  # Step 6: Switch turns
 
         print("Game over.")
 
-    print(f"X {players["X"]} = {wins['X']}")
-    print(f"O {players["O"]} = {wins['O']}")
-    print(f"Draws = {draws}")
+    print(f"Wins for {X_PLAYER} ({types_of_players[players[X_PLAYER]]}): {wins[X_PLAYER]}")
+    print(f"Wins for {O_PLAYER} ({types_of_players[players[O_PLAYER]]}): {wins[O_PLAYER]}")
+    print(f"Number of Draws: {draws}")
 
 
 if __name__ == "__main__":

@@ -1,4 +1,14 @@
+import random
+
 from game_ai import random_ai_move
+
+
+types_of_players = {
+    "H": "Human",
+    "1": "Random AI",
+    "2": "Rule-Based AI",
+    "3": "Minimax AI"
+}
 
 
 def display_board(board):
@@ -38,11 +48,9 @@ def get_ai_player_move(current_player, ai_level, board):
 
 def select_player_types():
     print(f"Who are the Players:")
-    print("H. Human")
-    print("1: Random AI")
-    print("2: Rule-Based AI")
-    print("3: Minimax AI")
-    print("Q: Quit Game")
+
+    for key, value in types_of_players.items():
+        print(f"{key}: {value}")
 
     player_types = []
     for i in range(2):
@@ -65,3 +73,17 @@ def select_rounds(player_types):
     else:
         rounds = int(input("How many rounds? "))
     return rounds
+
+
+def select_first_player(player_types):
+    print("First Player:")
+    print(f"1. {types_of_players[player_types[0]]}")
+    print(f"2. {types_of_players[player_types[1]]}")
+    print("R. Random First Player")
+
+    while True:
+        choice = input(f"First Player (1, 2, R): ").upper()
+        if choice in ['1', '2']:
+            return int(choice)-1
+        elif choice == "R":
+            return random.choice([0, 1])

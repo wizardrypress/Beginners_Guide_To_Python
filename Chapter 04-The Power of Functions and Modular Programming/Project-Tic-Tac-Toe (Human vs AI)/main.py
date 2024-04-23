@@ -1,32 +1,27 @@
 import random
 
-from game_mechanics import check_winner, check_draw
-from game_ui import display_board, get_human_player_move, select_ai_level
-from game_ai import get_random_ai_move, get_rules_based_ai_move
-
-
-def initialize_board():
-    return [" "]*9
+from game_mechanics import check_winner, check_draw, initialize_board, X_PLAYER, O_PLAYER
+from game_ui import display_board, get_human_player_move, display_help
+from game_ai import get_rules_based_ai_move
 
 
 def play_game():
 
     while True:
-        ai_level = select_ai_level()
         board = initialize_board()  # Initialize the board
-        current_player = "X"  # Start with player 'X'
-        computer_player = random.choice(["X","O"])
+        current_player = X_PLAYER  # Start with player 'X'
+        computer_player = random.choice([X_PLAYER, O_PLAYER])
         game_is_playing = True
+
+        display_help(board.copy())
+        print("The computer will play", computer_player)
 
         while game_is_playing:
             if current_player == computer_player:
-                if ai_level == 1:
-                    move = get_random_ai_move(board)
-                else:
-                    move = get_rules_based_ai_move(computer_player, board)
+                move = get_rules_based_ai_move(computer_player, board)
             else:
                 display_board(board)  # Display the board
-                move = get_human_player_move(current_player, board) # Get player move
+                move = get_human_player_move(current_player, board)
                 if move is None:
                     break
 
@@ -41,7 +36,7 @@ def play_game():
                 print("The game is a draw!")
                 game_is_playing = False
             else:
-                current_player = "O" if current_player == "X" else "X"  # Switch players
+                current_player = O_PLAYER if current_player == X_PLAYER else X_PLAYER  # Switch players
 
         print("Game over.")
 

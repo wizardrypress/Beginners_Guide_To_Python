@@ -1,5 +1,14 @@
+EMPTY_SPOT = " "
+X_PLAYER = "X"
+O_PLAYER = "O"
+
+
+def initialize_board():
+    return [EMPTY_SPOT] * 9
+
+
 def check_draw(board):
-    return " " not in board
+    return EMPTY_SPOT not in board
 
 
 def check_winner(board):
@@ -11,12 +20,11 @@ def check_winner(board):
     ]
 
     for condition in win_conditions:
-        if board[condition[0]] == board[condition[1]] == board[condition[2]] != " ":
+        if board[condition[0]] == board[condition[1]] == board[condition[2]] != EMPTY_SPOT:
             return board[condition[0]]
 
     return None
 
 
 def get_available_spots(board):
-    return [index for index, spot in enumerate(board) if spot == " "]
-
+    return [index for index, spot in enumerate(board) if spot == EMPTY_SPOT]

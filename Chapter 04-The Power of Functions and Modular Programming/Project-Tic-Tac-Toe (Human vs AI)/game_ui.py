@@ -1,4 +1,7 @@
+from game_mechanics import EMPTY_SPOT
+
 def display_board(board):
+    print()
     print(" " + board[0] + " | " + board[1] + " | " + board[2])
     print("---+---+---")
     print(" " + board[3] + " | " + board[4] + " | " + board[5])
@@ -21,7 +24,7 @@ strategist win!
 Available positions are:
 """)
     for i in range(len(board)):
-        if board[i] == " ":
+        if board[i] == EMPTY_SPOT:
             board[i] = str(i+1)
 
     display_board(board)
@@ -30,13 +33,12 @@ Available positions are:
 def get_human_player_move(current_player, board):
     # Convert board indexes 0-8 to more user-friendly numbers 1-9
     while True:
-        print(f"Player {current_player}")
-        move = input("What is your move (1-9, or H-help , Q-quit): ")
+        move = input(f"Player {current_player} - What is your move (1-9, or H-help , Q-quit): ")
         if move.isnumeric():
             position = int(move) - 1
             if position < 0 or position > 8:
                 print("Invalid move. Please choose a number between 1 and 9.")
-            elif board[position] != " ":
+            elif board[position] != EMPTY_SPOT:
                 print("This space is already taken. Please choose another space.")
             else:
                 return position
@@ -45,19 +47,3 @@ def get_human_player_move(current_player, board):
                 case "H": display_help(board.copy())
                 case "Q": return None
                 case _: print("Invalid input. Please enter a number between 1 and 9.")
-
-
-def select_ai_level():
-    print("Who is your opponent:")
-    print("1: Random AI")
-    print("2: Rule-Based AI")
-    print("Q: Quit")
-
-    while True:
-        choice = input("Enter your choice (1 or 2): ")
-        if choice.upper() == "Q":
-            return None
-        if choice in ['1', '2']:
-            return int(choice)
-        else:
-            print("Invalid selection. Please choose 1, 2 or Q")

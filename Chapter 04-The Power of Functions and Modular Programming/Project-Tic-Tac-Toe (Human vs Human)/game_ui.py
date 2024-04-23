@@ -1,4 +1,7 @@
+from game_mechanics import EMPTY_SPOT
+
 def display_board(board):
+    print()
     print(" " + board[0] + " | " + board[1] + " | " + board[2])
     print("---+---+---")
     print(" " + board[3] + " | " + board[4] + " | " + board[5])
@@ -21,7 +24,7 @@ strategist win!
 Available positions are:
 """)
     for i in range(len(board)):
-        if board[i] == " ":
+        if board[i] == EMPTY_SPOT:
             board[i] = str(i+1)
 
     display_board(board)
@@ -30,8 +33,7 @@ Available positions are:
 def get_human_player_move(current_player, board):
     # Convert board indexes 0-8 to more user-friendly numbers 1-9
     while True:
-        print(f"Player {current_player}")
-        move = input("What is your move (1-9, or H-help , Q-quit): ")
+        move = input(f"Player {current_player} - What is your move (1-9, or H-help , Q-quit): ")
         if move.isnumeric():
             position = int(move) - 1
             if position < 0 or position > 8:
