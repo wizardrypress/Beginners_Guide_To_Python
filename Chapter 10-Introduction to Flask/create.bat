@@ -1,5 +1,0 @@
-mkdir PersonalDashboard
-mkdir PersonalDashboard\static
-mkdir PersonalDashboard\static\css
-mkdir PersonalDashboard\static\images
-mkdir PersonalDashboard\templates
