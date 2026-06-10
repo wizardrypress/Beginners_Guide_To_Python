@@ -14,8 +14,8 @@ This repository contains source code, exercise solutions, and chapter projects f
 
 If you are using the English edition, go to:
 
-- `Exercises/English/2025`
-- `Exercises/English/2026`
+- `English/2025`
+- `English/2026`
 
 Choose the folder that matches your book edition.
 
@@ -25,7 +25,7 @@ Este repositorio contiene el código fuente, las soluciones de ejercicios y los 
 
 Si estás usando la edición en español, ve a:
 
-- `Exercises/Spanish/2025`
+- `Spanish/2025`
 
 Esa carpeta contiene los archivos correspondientes a la edición en español del libro.
 
@@ -35,7 +35,7 @@ Esa carpeta contiene los archivos correspondientes a la edición en español del
 
 अगर आप Hindi edition का उपयोग कर रहे हैं, तो इस folder में जाएँ:
 
-- `Exercises/Hindi/2024`
+- `Hindi/2024`
 
 नोट: यदि Hindi folder अभी उपलब्ध नहीं है, तो कृपया `feedback@wizardrypress.com` पर संपर्क करें। हम translated edition resources को repository में जोड़ रहे हैं।
 
@@ -65,13 +65,13 @@ You do **not** need a GitHub account to download these files.
 For example:
 
 ```text
-Exercises/Spanish/2025
+Spanish/2025
 ```
 
 or:
 
 ```text
-Exercises/English/2026
+English/2026
 ```
 
 ### Español
@@ -86,7 +86,7 @@ No necesitas una cuenta de GitHub para descargar estos archivos.
 Por ejemplo:
 
 ```text
-Exercises/Spanish/2025
+Spanish/2025
 ```
 
 ### हिन्दी / Hindi
@@ -101,31 +101,33 @@ Exercises/Spanish/2025
 उदाहरण:
 
 ```text
-Exercises/Hindi/2024
+Hindi/2024
 ```
 
 ---
 
 ## Repository Structure
 
-The main files are located under the `Exercises` folder:
+The main files are organized by language first, then edition year:
 
 ```text
-Exercises/
-    English/
-        2025/
-        2026/
-    Spanish/
-        2025/
-    Hindi/
-        2024/
+English/
+    2025/
+    2026/
+
+Spanish/
+    2025/
+
+Hindi/
+    2024/
 ```
 
 Each edition is organized by chapter. Inside each chapter folder, you may find:
 
-- `Examples` — short examples related to the chapter.
-- `Exercises` — practice exercise solutions.
-- `Project - ...` — the completed chapter project.
+* `Examples` — short examples related to the chapter.
+* `Exercises` — practice exercise solutions.
+* `Project - ...` — the completed chapter project.
+* `Bonus` — supplemental material, when available.
 
 Not every chapter has every folder. Some setup-only chapters may not require source code.
 
@@ -136,7 +138,7 @@ Not every chapter has every folder. Some setup-only chapters may not require sou
 The Spanish edition files are located here:
 
 ```text
-Exercises/Spanish/2025
+Spanish/2025
 ```
 
 Current Spanish 2025 structure:
