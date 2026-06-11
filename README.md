@@ -29,15 +29,15 @@ Si estás usando la edición en español, ve a:
 
 Esa carpeta contiene los archivos correspondientes a la edición en español del libro.
 
-### हिन्दी / Hindi
+### हिन्दी / Hindi / Hinglish
 
-इस रिपॉज़िटरी में *Absolute Beginner's Guide to Python Programming* की अलग-अलग editions के लिए source code, exercise solutions और chapter projects शामिल हैं।
+इस repository में *Absolute Beginner's Guide to Python Programming* की अलग-अलग editions के लिए source code, exercise solutions, और chapter projects शामिल हैं।
 
-अगर आप Hindi edition का उपयोग कर रहे हैं, तो इस folder में जाएँ:
+Agar aap Hindi/Hinglish edition use kar rahe hain, to is folder mein jaayein:
 
-- `Hindi/2024`
+* `Hindi/2024`
 
-नोट: यदि Hindi folder अभी उपलब्ध नहीं है, तो कृपया `feedback@wizardrypress.com` पर संपर्क करें। हम translated edition resources को repository में जोड़ रहे हैं।
+Us folder mein book ke Hindi edition se related files hain.
 
 ---
 
